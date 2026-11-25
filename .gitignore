@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+training/cache/
+backend/uploads/
+backend/data/
+frontend/node_modules/
+frontend/dist/
+dataset/raw/
+*.log
+.env

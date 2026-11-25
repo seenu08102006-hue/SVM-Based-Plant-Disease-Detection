@@ -1,0 +1,13 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+numpy
+opencv-python-headless
+scikit-image
+scikit-learn
+joblib
+sqlalchemy>=2.0
+reportlab
+huggingface_hub  # training only: downloads the official leaf-grouped split files
+# Optional: only needed when DATABASE_URL points at PostgreSQL
+# psycopg[binary]

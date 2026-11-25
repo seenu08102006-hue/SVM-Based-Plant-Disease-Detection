@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", ui-sans-serif, sans-serif;
+  --color-leaf-50: #f0fdf4;
+  --color-leaf-100: #dcfce7;
+  --color-leaf-200: #bbf7d0;
+  --color-leaf-300: #86efac;
+  --color-leaf-400: #4ade80;
+  --color-leaf-500: #22c55e;
+  --color-leaf-600: #16a34a;
+  --color-leaf-700: #15803d;
+  --color-leaf-800: #166534;
+  --color-leaf-900: #14532d;
+  --color-leaf-950: #052e16;
+}
+
+/* Chart tokens (validated with the dataviz palette script). Text never uses series colors. */
+:root {
+  --chart-surface: #ffffff;
+  --chart-text: #1f2937;
+  --chart-muted: #6b7280;
+  --chart-grid: #e5e7eb;
+  --series-1: #257de0;
+  --series-2: #f47230;
+  --series-3: #00b894;
+  --brand-bar: #16a34a;
+}
+.dark {
+  --chart-surface: #0b1a12;
+  --chart-text: #e5efe8;
+  --chart-muted: #9aa8a0;
+  --chart-grid: #1f3a2b;
+  --series-1: #338ced;
+  --series-2: #e76624;
+  --series-3: #00a888;
+  --brand-bar: #22c55e;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  @apply font-sans antialiased text-gray-800 bg-leaf-50 dark:bg-[#06130c] dark:text-gray-100;
+  min-height: 100vh;
+}
+
+@utility glass {
+  @apply rounded-3xl border border-white/60 bg-white/65 shadow-[0_8px_32px_-12px_rgba(21,128,61,0.25)] backdrop-blur-xl
+    dark:border-white/10 dark:bg-white/[0.04] dark:shadow-[0_8px_32px_-12px_rgba(0,0,0,0.6)];
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-semibold transition-all duration-200
+    focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-leaf-400/40 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+@utility btn-primary {
+  @apply btn bg-gradient-to-r from-leaf-600 to-emerald-500 text-white shadow-lg shadow-leaf-600/30
+    hover:shadow-xl hover:shadow-leaf-600/40 hover:-translate-y-0.5 active:translate-y-0;
+}
+@utility btn-ghost {
+  @apply btn border border-leaf-600/20 bg-white/60 text-leaf-800 hover:bg-white dark:border-white/10 dark:bg-white/5
+    dark:text-leaf-200 dark:hover:bg-white/10;
+}
+@utility chip {
+  @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+}
+@utility h-section {
+  @apply font-display text-3xl font-bold tracking-tight text-leaf-950 sm:text-4xl dark:text-white;
+}
+@utility label {
+  @apply text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400;
+}
+
+.bg-blobs::before, .bg-blobs::after {
+  content: ""; position: fixed; z-index: -1; border-radius: 9999px; filter: blur(90px); opacity: .55; pointer-events: none;
+}
+.bg-blobs::before { width: 520px; height: 520px; top: -160px; left: -120px; background: #86efac; }
+.bg-blobs::after { width: 460px; height: 460px; bottom: -160px; right: -100px; background: #a7f3d0; }
+.dark .bg-blobs::before { background: #14532d; opacity: .45; }
+.dark .bg-blobs::after { background: #064e3b; opacity: .45; }
+
+.math { font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif; font-size: 1.1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
